@@ -28,7 +28,7 @@ const faqs = [
 ];
 const pageTitle = "Luz Oliveira Interiores | Designer de interiores em Maceió";
 const pageDescription = "Projetos e consultoria de interiores em Maceió, AL, para transformar ambientes residenciais e comerciais com identidade, intenção e funcionalidade.";
-const siteOrigin = (import.meta.env.PUBLIC_SITE_URL || Astro.url.origin).replace(/\/$/, "");
+const siteOrigin = (import.meta.env.PUBLIC_SITE_URL || "https://luz-oliveira-interiores.pages.dev").replace(/\/$/, "");
 const canonicalUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
 const shareImageUrl = new URL("/og-card.png", `${siteOrigin}/`).toString();
 const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
@@ -54,7 +54,9 @@ const structuredData = {
     <meta name="description" content={pageDescription} />
     <meta name="robots" content={allowIndexing ? "index, follow, max-image-preview:large" : "noindex, nofollow"} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="preload" as="image" href={featured.image} type="image/webp" fetchpriority="high" />
     <meta name="theme-color" content="#13221d" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
@@ -235,7 +237,7 @@ const structuredData = {
           const rect = parallaxElement.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
           const distance = (rect.top + rect.height / 2 - viewportHeight / 2) / viewportHeight;
-          const offset = Math.max(-18, Math.min(18, distance * -36));
+          const offset = Math.max(-10, Math.min(10, distance * -20));
           parallaxElement.style.setProperty("--parallax-y", `${offset.toFixed(2)}px`);
         };
 

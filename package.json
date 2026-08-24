@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
-    "build": "astro check && astro build && node scripts/prepare-sites-output.mjs",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "test": "vitest run"
   },
@@ -16,7 +16,8 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "vitest": "^4.1.10",
+    "wrangler": "^4.125.0"
   },
   "type": "module"
 }

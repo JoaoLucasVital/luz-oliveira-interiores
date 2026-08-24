@@ -37,16 +37,16 @@ html {
 
 .motion-ready [data-reveal] {
   opacity: 0;
-  transform: translate3d(0, 42px, 0);
+  transform: translate3d(0, 28px, 0);
   transition:
-    opacity 0.82s var(--motion-ease),
-    transform 0.82s var(--motion-ease);
+    opacity 0.72s var(--motion-ease),
+    transform 0.72s var(--motion-ease);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
 
-.motion-ready [data-reveal="left"] { transform: translate3d(-38px, 0, 0); }
-.motion-ready [data-reveal="right"] { transform: translate3d(38px, 0, 0); }
+.motion-ready [data-reveal="left"] { transform: translate3d(-24px, 0, 0); }
+.motion-ready [data-reveal="right"] { transform: translate3d(24px, 0, 0); }
 
 .motion-ready [data-reveal].is-visible {
   opacity: 1;
@@ -79,8 +79,8 @@ html {
 }
 
 .project-card:hover {
-  transform: translate3d(0, -9px, 0);
-  box-shadow: 0 24px 48px rgba(19, 34, 29, 0.18);
+  transform: translate3d(0, -5px, 0);
+  box-shadow: 0 20px 42px rgba(19, 34, 29, 0.15);
 }
 
 .project-card .card-overlay { transition: background 0.55s ease; }
@@ -185,11 +185,11 @@ nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
 }
 
 .service-list article:hover {
-  transform: translate3d(10px, 0, 0);
+  transform: translate3d(5px, 0, 0);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-.steps article:hover { transform: translate3d(0, -6px, 0); }
+.steps article:hover { transform: translate3d(0, -4px, 0); }
 
 .service-list h3,
 .steps h3 { transition: color 0.3s ease, transform 0.4s var(--motion-ease); }
@@ -212,7 +212,7 @@ nav a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
 }
 
 .floating-whatsapp:hover {
-  transform: translate3d(0, -6px, 0) scale(1.06);
+  transform: translate3d(0, -4px, 0) scale(1.04);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
 }
 
