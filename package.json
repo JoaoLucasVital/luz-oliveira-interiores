@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "astro dev",
     "check": "astro check",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && node scripts/prepare-sites-output.mjs",
     "preview": "astro preview",
     "test": "vitest run"
   },
