@@ -1,0 +1,194 @@
+:root {
+  color-scheme: light;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 12px;
+  left: 12px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  transform: translateY(-150%);
+  transition: transform .2s ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+:where(a, button, summary):focus-visible {
+  outline: 2px solid var(--clay);
+  outline-offset: 4px;
+}
+
+:where(a, button, summary) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(.button, .floating-whatsapp, .project-card, .collage-card) {
+  touch-action: manipulation;
+}
+
+:where(section[id], main[id]) {
+  scroll-margin-top: 90px;
+}
+
+.project-card,
+.collage-card {
+  background: #d8d4ca;
+}
+
+.project-card img,
+.collage-card img,
+.hero-wash img {
+  image-rendering: auto;
+}
+
+@media (max-width: 560px) {
+  .section {
+    padding: 74px 20px;
+  }
+
+  .site-header {
+    padding-inline: 16px;
+  }
+
+  .hero-editorial-copy {
+    min-height: 620px;
+    padding: 124px 20px 64px;
+  }
+
+  .hero-editorial h1 {
+    font-size: clamp(45px, 13.5vw, 53px);
+  }
+
+  .hero-editorial .hero-text {
+    margin: 25px 0 29px;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-note {
+    margin-top: 43px;
+  }
+
+  .intro-strip {
+    padding-inline: 20px;
+  }
+
+  .intro-strip p {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .section-heading h2,
+  .services h2,
+  .contact h2,
+  .faq-heading h2 {
+    font-size: clamp(40px, 12vw, 48px);
+  }
+
+  .section-heading,
+  .section-heading.compact {
+    gap: 16px;
+    margin-bottom: 38px;
+  }
+
+  .project-card,
+  .card-2,
+  .card-3 {
+    aspect-ratio: 4 / 5;
+  }
+
+  .card-copy {
+    left: 23px;
+    right: 65px;
+    bottom: 24px;
+    min-height: 112px;
+  }
+
+  .card-copy strong {
+    font-size: 24px;
+  }
+
+  .services {
+    gap: 46px;
+  }
+
+  .service-list article {
+    padding-block: 32px;
+  }
+
+  .service-list h3 {
+    font-size: 29px;
+  }
+
+  .statement {
+    padding: 88px 20px;
+  }
+
+  .statement blockquote {
+    font-size: clamp(31px, 9.6vw, 40px);
+  }
+
+  .faq {
+    gap: 36px;
+  }
+
+  .faq-list summary {
+    min-height: 76px;
+  }
+
+  .contact {
+    gap: 34px;
+  }
+
+  .contact-side .button {
+    width: 100%;
+  }
+
+  .floating-whatsapp {
+    right: 16px;
+    bottom: 16px;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand strong {
+    font-size: 15px;
+  }
+
+  .site-header .button-small {
+    width: 40px;
+  }
+
+  .collage-primary {
+    left: 3%;
+    width: 64%;
+  }
+
+  .collage-secondary {
+    right: 1%;
+    width: 45%;
+  }
+}

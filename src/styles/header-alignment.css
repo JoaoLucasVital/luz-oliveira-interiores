@@ -1,0 +1,18 @@
+.site-header {
+  grid-template-columns: auto 1fr auto;
+}
+
+.site-header nav {
+  justify-self: start;
+  margin-left: clamp(32px, 4vw, 68px);
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .site-header nav {
+    margin-left: 0;
+  }
+}
