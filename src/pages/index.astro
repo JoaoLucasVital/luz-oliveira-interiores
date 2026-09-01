@@ -7,7 +7,13 @@ import "../styles/header-alignment.css";
 import "../styles/hero-editorial.css";
 import "../styles/footer-large-name.css";
 import "../styles/polish.css";
+import "../styles/brand-palette.css";
+import "../styles/project-accordion.css";
+import "../styles/about-luz.css";
+import "../styles/page-loader.css";
+import "../styles/arrow-icons.css";
 import SocialIcon from "../components/SocialIcon.astro";
+import ArrowIcon from "../components/ArrowIcon.astro";
 import { company, projects, whatsappUrl } from "../data/content";
 const featured = projects[0];
 const services = [
@@ -30,8 +36,8 @@ const pageTitle = "Luz Oliveira Interiores | Designer de interiores em Maceió";
 const pageDescription = "Projetos e consultoria de interiores em Maceió, AL, para transformar ambientes residenciais e comerciais com identidade, intenção e funcionalidade.";
 const siteOrigin = (import.meta.env.PUBLIC_SITE_URL || "https://luz-oliveira-interiores.pages.dev").replace(/\/$/, "");
 const canonicalUrl = new URL(Astro.url.pathname, `${siteOrigin}/`).toString();
-const shareImageUrl = new URL("/og-card.png", `${siteOrigin}/`).toString();
-const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
+const shareImageUrl = new URL("/og-room-horizontal.jpg", `${siteOrigin}/`).toString();
+const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING !== "false";
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
@@ -54,10 +60,10 @@ const structuredData = {
     <meta name="description" content={pageDescription} />
     <meta name="robots" content={allowIndexing ? "index, follow, max-image-preview:large" : "noindex, nofollow"} />
     <link rel="canonical" href={canonicalUrl} />
-    <link rel="icon" href="/favicon-circle.png" type="image/png" />
+    <link rel="icon" href="/favicon-logo.png" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" as="image" href={featured.image} type="image/webp" fetchpriority="high" />
-    <meta name="theme-color" content="#13221d" />
+    <meta name="theme-color" content="#3a2b2f" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content={company.name} />
@@ -65,6 +71,7 @@ const structuredData = {
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={shareImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Luz Oliveira Interiores — projetos e consultoria em Maceió" />
@@ -75,15 +82,23 @@ const structuredData = {
     <meta name="twitter:image:alt" content="Luz Oliveira Interiores — projetos e consultoria em Maceió" />
     <title>{pageTitle}</title>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
-    <script is:inline>document.documentElement.classList.add("motion-ready");</script>
+    <script is:inline>document.documentElement.classList.add("page-loading");</script>
   </head>
   <body>
+    <div class="page-loader" data-page-loader role="status" aria-label="Carregando site da Luz Oliveira Interiores">
+      <div class="page-loader-content">
+        <div class="page-loader-orb" aria-hidden="true">
+          <span class="page-loader-monogram">LO</span>
+        </div>
+        <div class="page-loader-brand"><strong>Luz Oliveira</strong><span>Interiores</span></div>
+      </div>
+    </div>
     <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo principal</a>
     <main id="conteudo-principal">
       <header class="site-header">
-        <a class="brand" href="#inicio" aria-label="Luz Oliveira Interiores — início"><span class="brand-mark">LO</span><span><strong>Luz Oliveira</strong><small>interiores</small></span></a>
-        <nav aria-label="Navegação principal"><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#processo">Como começar</a></nav>
-        <a class="button button-small" href={whatsappUrl} target="_blank" rel="noreferrer">Conversar no WhatsApp</a>
+        <a class="brand" href="#inicio" aria-label="Luz Oliveira Interiores — início"><span class="brand-logo" aria-hidden="true"></span></a>
+        <nav aria-label="Navegação principal"><a href="#quem-sou">Sobre mim</a><a href="#projetos">Projetos</a><a href="#servicos">Serviços</a><a href="#processo">Como começar</a></nav>
+        <a class="button button-small" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Conversar no WhatsApp"><span class="button-label">Conversar no WhatsApp</span><ArrowIcon direction="up-right" class="button-arrow" /></a>
       </header>
 
       <section class="hero-editorial" id="inicio">
@@ -91,7 +106,7 @@ const structuredData = {
           <p class="eyebrow">Design de interiores em {company.location}</p>
           <h1>Espaços com <em>identidade</em>, intenção e beleza.</h1>
           <p class="hero-text">Projetos e consultoria para transformar o comum em ambientes que acolhem, funcionam e contam a sua história.</p>
-          <div class="hero-actions"><a class="button" href={whatsappUrl} target="_blank" rel="noreferrer">Falar sobre meu projeto</a><a class="text-link" href="#projetos">Conhecer projetos <span>↘</span></a></div>
+          <div class="hero-actions"><a class="text-link hero-projects-link" href="#projetos">Conhecer projetos <ArrowIcon direction="down" /></a></div>
           <div class="hero-note"><span>Projetos</span><i></i><span>Consultoria</span><i></i><span>Maceió</span></div>
         </div>
         <div class="hero-collage" aria-label="Seleção de projetos da Luz Oliveira Interiores">
@@ -104,28 +119,57 @@ const structuredData = {
             <img src={projects[1].image} alt={projects[1].imageAlt} width={projects[1].width} height={projects[1].height} loading="eager" fetchpriority="low" decoding="async" sizes="(max-width: 560px) 44vw, (max-width: 900px) 41vw, 22vw" />
             <span><small>Comercial</small><strong>{projects[1].title}</strong></span>
           </a>
-          <div class="collage-seal" aria-hidden="true"><span>LO</span><small>interiores</small></div>
+          <div class="collage-seal" aria-hidden="true"><span class="brand-logo collage-logo"></span></div>
           <p class="collage-caption">Ambientes autorais<br />em Maceió, AL</p>
         </div>
+      </section>
+
+      <section class="about-luz section" id="quem-sou">
+        <div class="about-luz-intro">
+          <p class="eyebrow dark">Quem sou</p>
+          <h2>Design que nasce da escuta e ganha forma com <em>intenção.</em></h2>
+          <p>À frente da Luz Oliveira Interiores, Luz atua em Maceió com projetos e consultoria, aproximando estética, funcionalidade e identidade com atenção aos processos e às pessoas.</p>
+        </div>
+
+        <div class="about-luz-stage" aria-label="Apresentação de Luz Oliveira">
+          <div class="about-luz-aura" aria-hidden="true"><span></span><span></span></div>
+
+          <figure class="about-luz-portrait">
+            <div class="about-luz-photo"><img src="/photos/luz-oliveira-quem-sou-final.png" alt="Retrato de Luz Oliveira, designer de interiores em Maceió" width="960" height="1280" loading="lazy" decoding="async" /></div>
+            <figcaption><strong>Luz Oliveira</strong><span>Designer de interiores</span></figcaption>
+          </figure>
+
+          <article class="about-float-card about-card-location"><span>01</span><div><strong>Maceió, AL</strong><small>Atuação local</small></div></article>
+          <article class="about-float-card about-card-projects"><span>02</span><div><strong>Projetos de interiores</strong><small>Espaços residenciais e comerciais</small></div></article>
+          <article class="about-float-card about-card-consulting"><span>03</span><div><strong>Consultoria</strong><small>Direção para decisões mais seguras</small></div></article>
+          <article class="about-float-card about-card-method"><span>04</span><div><strong>Técnica, processos e pessoas</strong><small>A base que ela destaca em seu trabalho</small></div></article>
+        </div>
+
+        <a class="about-luz-link instagram-link" href="https://www.instagram.com/p/DWJN5NjFgjG/" target="_blank" rel="noreferrer">Conhecer mais sobre a Luz <SocialIcon name="instagram" /></a>
       </section>
 
       <section class="intro-strip" aria-label="Apresentação"><span class="line"></span><p>Interiores que equilibram função, estética e a essência de cada pessoa.</p><span class="index">01</span></section>
 
       <section class="projects section" id="projetos">
-        <div class="section-heading"><p class="eyebrow dark">Projetos selecionados</p><h2>Ambientes pensados para <em>viver e trabalhar bem.</em></h2><p>Uma seleção de trabalhos publicados no perfil oficial. Cada projeto leva à sua publicação original.</p></div>
-        <div class="project-grid">
-          {projects.map((project, index) => (
-            <a class={`project-card card-${index + 1}`} href={project.instagramPostUrl} target="_blank" rel="noreferrer" aria-label={`Ver publicação original: ${project.title}`}>
-              <img src={project.image} alt={project.imageAlt} width={project.width} height={project.height} loading="lazy" decoding="async" sizes="(max-width: 560px) calc(100vw - 40px), (max-width: 900px) 50vw, 33vw" />
-              <span class="card-overlay"></span><span class="card-number">0{index + 1}</span>
-              <span class="card-copy"><small>{project.segment}</small><strong>{project.title}</strong><span>{project.description}</span></span><span class="card-arrow"><SocialIcon name="instagram" /></span>
-            </a>
-          ))}
+        <div class="projects-layout">
+          <div class="section-heading"><p class="eyebrow dark">Projetos selecionados</p><h2>Ambientes pensados para <em>viver e trabalhar bem.</em></h2><p>Uma seleção de trabalhos publicados no perfil oficial. Cada projeto leva à sua publicação original.</p><a class="projects-portfolio-link" href="https://kuula.co/profile/luzoliveira/collections" target="_blank" rel="noreferrer">Ver portfólio completo em 360° <ArrowIcon direction="up-right" /></a></div>
+          <div class="project-accordion" data-project-accordion aria-label="Projetos selecionados">
+            {projects.map((project, index) => (
+              <a class={`project-accordion-card ${index === 0 ? "is-active" : ""}`} data-accordion-card href={project.instagramPostUrl} target="_blank" rel="noreferrer" aria-label={`Ver publicação original: ${project.title}`} aria-current={index === 0 ? "true" : "false"}>
+                <img src={project.image} alt={project.imageAlt} width={project.width} height={project.height} loading="lazy" decoding="async" sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 900px) 85vw, 46vw" />
+                <span class="project-accordion-overlay"></span>
+                <span class="project-accordion-index">0{index + 1}</span>
+                <span class="project-accordion-rail-title" aria-hidden="true">{project.title}</span>
+                <span class="project-accordion-copy"><small>{project.segment}</small><strong>{project.title}</strong><span>{project.description}</span></span>
+                <span class="project-accordion-link" aria-hidden="true"><SocialIcon name="instagram" /></span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
       <section class="services section" id="servicos">
-        <div class="services-intro"><p class="eyebrow">Duas formas de transformar</p><h2>O suporte certo para o seu <em>momento.</em></h2><p>O perfil oficial apresenta duas frentes de atendimento. A conversa inicial ajuda a identificar qual delas faz mais sentido para o que você precisa.</p><a class="light-link" href={whatsappUrl} target="_blank" rel="noreferrer">Descobrir qual serviço combina comigo ↗</a></div>
+        <div class="services-intro"><p class="eyebrow">Duas formas de transformar</p><h2>O suporte certo para o seu <em>momento.</em></h2><p>O perfil oficial apresenta duas frentes de atendimento. A conversa inicial ajuda a identificar qual delas faz mais sentido para o que você precisa.</p><a class="light-link" href={whatsappUrl} target="_blank" rel="noreferrer">Descobrir qual serviço combina comigo <ArrowIcon direction="up-right" /></a></div>
         <div class="service-list">{services.map((service) => <article><span>{service.number}</span><div><h3>{service.title}</h3><p>{service.text}</p></div></article>)}</div>
       </section>
 
@@ -158,7 +202,7 @@ const structuredData = {
     <footer class="site-footer">
       <div class="footer-main">
         <div class="footer-about">
-          <a class="brand footer-brand" href="#inicio"><span class="brand-mark">LO</span><span><strong>Luz Oliveira</strong><small>interiores</small></span></a>
+          <a class="brand footer-brand" href="#inicio" aria-label="Luz Oliveira Interiores — voltar ao início"><span class="brand-logo" aria-hidden="true"></span></a>
           <p>Projetos e consultoria para criar espaços com identidade, intenção e beleza.</p>
           <div class="footer-socials" aria-label="Redes e contato">
             <a href={company.instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram da Luz Oliveira Interiores"><SocialIcon name="instagram" /></a>
@@ -178,23 +222,25 @@ const structuredData = {
           <p class="footer-label">Contato</p>
           <span>Atendimento em Maceió, AL</span>
           <a href={whatsappUrl} target="_blank" rel="noreferrer">{company.phoneDisplay}</a>
-          <a class="footer-contact-link" href={whatsappUrl} target="_blank" rel="noreferrer">Conversar sobre meu projeto <span>↗</span></a>
         </div>
       </div>
 
       <div class="footer-bottom">
         <small>© Luz Oliveira Interiores</small>
-        <small>Proposta conceitual não contratada · Conteúdo público utilizado apenas neste protótipo privado.</small>
       </div>
     </footer>
     <a class="floating-whatsapp" href={whatsappUrl} target="_blank" rel="noreferrer" aria-label="Conversar no WhatsApp"><SocialIcon name="whatsapp" /></a>
     <script is:inline>
       (() => {
+        const startPageAnimations = () => {
+          document.documentElement.classList.add("motion-ready");
+
         const revealGroups = [
           { selector: ".intro-strip, .section-heading, .statement > *, footer", direction: "up", step: 0 },
-          { selector: ".project-card, .steps article", direction: "up", step: 110 },
-          { selector: ".services-intro, .faq-heading, .contact > div:first-child", direction: "left", step: 0 },
+          { selector: ".project-accordion, .steps article", direction: "up", step: 110 },
+          { selector: ".about-luz-intro, .services-intro, .faq-heading, .contact > div:first-child", direction: "left", step: 0 },
           { selector: ".service-list article, .faq-list details, .contact-side", direction: "right", step: 80 },
+          { selector: ".about-luz-stage, .about-luz-link", direction: "up", step: 90 },
         ];
 
         revealGroups.forEach(({ selector, direction, step }) => {
@@ -210,18 +256,44 @@ const structuredData = {
 
         if (reducedMotion.matches || !("IntersectionObserver" in window)) {
           revealAll();
-          return;
+        } else {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+
+          revealElements.forEach((element) => observer.observe(element));
         }
 
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          });
-        }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
+        document.querySelectorAll("[data-project-accordion]").forEach((accordion) => {
+          const cards = [...accordion.querySelectorAll("[data-accordion-card]")];
+          const canHover = window.matchMedia("(hover: hover) and (pointer: fine)");
+          const compactAccordion = window.matchMedia("(max-width: 640px)");
 
-        revealElements.forEach((element) => observer.observe(element));
+          const activate = (selectedCard) => {
+            cards.forEach((card) => {
+              const isActive = card === selectedCard;
+              card.classList.toggle("is-active", isActive);
+              card.setAttribute("aria-current", isActive ? "true" : "false");
+            });
+          };
+
+          cards.forEach((card) => {
+            card.addEventListener("pointerenter", () => {
+              if (canHover.matches) activate(card);
+            });
+            card.addEventListener("focus", () => activate(card));
+            card.addEventListener("click", (event) => {
+              if (compactAccordion.matches && !card.classList.contains("is-active")) {
+                event.preventDefault();
+                activate(card);
+              }
+            });
+          });
+        });
 
         const parallaxElement = document.querySelector(".hero-collage");
         const desktopMotion = window.matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)");
@@ -250,6 +322,33 @@ const structuredData = {
         window.addEventListener("resize", requestParallax, { passive: true });
         desktopMotion.addEventListener("change", requestParallax);
         requestParallax();
+        };
+
+        const pageLoader = document.querySelector("[data-page-loader]");
+        const loaderStartedAt = performance.now();
+        const reducedPageMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let loadingFinished = false;
+
+        const finishLoading = () => {
+          if (loadingFinished) return;
+          loadingFinished = true;
+          const minimumDuration = reducedPageMotion.matches ? 0 : 900;
+          const remainingTime = Math.max(0, minimumDuration - (performance.now() - loaderStartedAt));
+
+          window.setTimeout(() => {
+            pageLoader?.classList.add("is-leaving");
+            window.setTimeout(() => {
+              pageLoader?.remove();
+              document.documentElement.classList.remove("page-loading");
+              startPageAnimations();
+            }, reducedPageMotion.matches ? 20 : 520);
+          }, remainingTime);
+        };
+
+        if (document.readyState === "complete") finishLoading();
+        else window.addEventListener("load", finishLoading, { once: true });
+
+        window.setTimeout(finishLoading, 6000);
       })();
     </script>
   </body>

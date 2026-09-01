@@ -59,6 +59,42 @@
   border-color: rgba(19, 34, 29, 0.3);
 }
 
+.hero-editorial .text-link.hero-projects-link {
+  width: 230px;
+  max-width: 100%;
+  min-height: 58px;
+  justify-content: space-between;
+  padding: 0 11px 0 22px;
+  border: 1px solid rgba(176, 88, 101, 0.3);
+  border-radius: 999px;
+  background: var(--brand-pink-soft);
+  box-shadow: 0 12px 30px rgba(142, 79, 92, 0.12);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.hero-editorial .hero-projects-link .arrow-icon {
+  width: 34px;
+  height: 34px;
+  padding: 9px;
+  border-radius: 50%;
+  background: var(--clay);
+  color: #fff;
+  box-shadow: 0 7px 16px rgba(142, 79, 92, 0.2);
+}
+
+.hero-editorial .hero-projects-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(176, 88, 101, 0.48);
+  background: #f9d9d7;
+  box-shadow: 0 16px 34px rgba(142, 79, 92, 0.17);
+}
+
+.hero-editorial .hero-projects-link:hover .arrow-icon {
+  transform: translate3d(0, 2px, 0);
+}
+
 .hero-editorial .hero-note {
   color: rgba(19, 34, 29, 0.52);
 }

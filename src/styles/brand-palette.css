@@ -1,0 +1,174 @@
+:root {
+  --ink: #3a2b2f;
+  --forest: #8e4f5c;
+  --sage: #f2c8c8;
+  --cream: #f8eee9;
+  --paper: #fff9f6;
+  --clay: #b05865;
+  --muted: #74676a;
+  --brand-pink: #f7b3b4;
+  --brand-pink-soft: #fde8e6;
+  --brand-line: #e5d4cf;
+}
+
+.brand-logo {
+  display: block;
+  width: 154px;
+  height: 58px;
+  flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: url("/logo-luz-oliveira.png") center / contain no-repeat;
+  mask: url("/logo-luz-oliveira.png") center / contain no-repeat;
+}
+
+.site-header .brand {
+  color: var(--ink);
+}
+
+.site-header .brand-mark {
+  display: none;
+}
+
+.site-header .brand-mark {
+  border-color: rgba(58, 43, 47, 0.36);
+}
+
+.button:hover,
+.floating-whatsapp:hover {
+  background: #944753;
+}
+
+.hero-editorial {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(247, 179, 180, 0.52), transparent 30%),
+    linear-gradient(135deg, var(--paper) 0%, var(--cream) 100%);
+}
+
+.hero-editorial-copy::after {
+  background: rgba(58, 43, 47, 0.2);
+}
+
+.hero-editorial .text-link {
+  border-color: rgba(58, 43, 47, 0.28);
+}
+
+.hero-editorial .hero-note {
+  color: rgba(58, 43, 47, 0.62);
+}
+
+.hero-wash {
+  opacity: 0.16;
+  filter: saturate(0.38) sepia(0.08);
+}
+
+.hero-wash::after {
+  background: linear-gradient(90deg, var(--cream), transparent 36%, rgba(248, 238, 233, 0.08));
+}
+
+.collage-card {
+  box-shadow: 0 28px 70px rgba(58, 43, 47, 0.2);
+}
+
+.collage-seal {
+  width: 148px;
+  height: 94px;
+  border-radius: 999px;
+  background: var(--brand-pink);
+  color: var(--ink);
+  box-shadow: 0 16px 35px rgba(142, 79, 92, 0.22);
+}
+
+.collage-seal .collage-logo {
+  width: 112px;
+  height: 68px;
+}
+
+.intro-strip {
+  background: var(--brand-pink-soft);
+}
+
+.services .eyebrow,
+.service-list > article > span {
+  color: var(--brand-pink);
+}
+
+.services h2 em {
+  color: #f8deda;
+}
+
+.faq-list,
+.steps {
+  border-color: var(--brand-line);
+}
+
+.faq-list details,
+.steps article {
+  border-color: var(--brand-line);
+}
+
+.statement {
+  background: var(--brand-pink);
+  color: var(--ink);
+}
+
+.statement .eyebrow {
+  color: var(--forest);
+}
+
+.statement::before,
+.statement::after {
+  border-color: rgba(58, 43, 47, 0.12);
+}
+
+.statement > a {
+  border-color: rgba(58, 43, 47, 0.38);
+}
+
+.contact {
+  background: var(--cream);
+}
+
+.site-footer .footer-label {
+  color: var(--sage);
+}
+
+.site-footer .footer-brand {
+  color: #fff;
+}
+
+.site-footer .footer-brand .brand-logo {
+  width: 178px;
+  height: 70px;
+}
+
+.footer-socials a:hover {
+  border-color: var(--brand-pink);
+}
+
+.footer-socials a:hover {
+  background: var(--brand-pink);
+  color: var(--ink);
+}
+
+@media (max-width: 560px) {
+  .site-header .brand-logo {
+    width: 116px;
+    height: 46px;
+  }
+
+  .hero-editorial {
+    background:
+      radial-gradient(circle at 76% 8%, rgba(247, 179, 180, 0.5), transparent 32%),
+      linear-gradient(150deg, var(--paper) 0%, var(--cream) 100%);
+  }
+
+  .collage-seal {
+    width: 112px;
+    height: 76px;
+  }
+
+  .collage-seal .collage-logo {
+    width: 86px;
+    height: 55px;
+  }
+}

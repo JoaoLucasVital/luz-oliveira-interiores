@@ -1,4 +1,4 @@
-const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING === "true";
+const allowIndexing = import.meta.env.PUBLIC_ALLOW_INDEXING !== "false";
 const siteOrigin = (import.meta.env.PUBLIC_SITE_URL || "https://luz-oliveira-interiores.pages.dev").replace(/\/$/, "");
 
 export function GET() {
