@@ -4,6 +4,17 @@ Landing page institucional em Astro para apresentar projetos e consultoria de in
 
 Publicação oficial: https://luz-oliveira-interiores.pages.dev
 
+## Projetos finalizados
+
+**Status: finalizado e aprovado pela cliente.**
+
+Este repositório mantém o código-fonte e as imagens da versão entregue da Luz Oliveira Interiores, incluindo os últimos ajustes aprovados na seção “Quem sou”, com o texto distribuído nos balões flutuantes e a localização preservada.
+
+- Site institucional responsivo, com identidade visual em rosa e bege.
+- Apresentação da profissional, portfólio com acesso aos projetos 360°, serviços e FAQ.
+- Contato por WhatsApp, prévia de compartilhamento e favicon personalizados.
+- Hospedagem de produção no Cloudflare Pages; o GitHub mantém o backup versionado do projeto.
+
 ## Desenvolvimento local
 
 ```bash

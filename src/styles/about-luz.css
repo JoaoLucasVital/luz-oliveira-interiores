@@ -50,14 +50,6 @@
   font-weight: 400;
 }
 
-.about-luz-intro > p:last-child {
-  max-width: 690px;
-  margin: 30px auto 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.8;
-}
-
 .about-luz-stage {
   position: relative;
   max-width: 1160px;
@@ -166,7 +158,7 @@
   width: min(25vw, 278px);
   min-height: 106px;
   padding: 20px;
-  grid-template-columns: 32px 1fr;
+  grid-template-columns: 32px minmax(0, 1fr);
   gap: 13px;
   align-items: start;
   border: 1px solid rgba(247, 179, 180, .36);
@@ -199,19 +191,55 @@
   font-family: Georgia, "Times New Roman", serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.13;
+  line-height: 1.25;
+  text-wrap: balance;
 }
 
 .about-float-card small {
   margin-top: 8px;
   color: var(--muted);
-  font-size: 10px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .about-card-location {
   top: 116px;
   left: 2%;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 16px;
+}
+
+.about-card-location > .about-location-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(174, 83, 103, .14);
+  background: rgba(247, 179, 180, .24);
+  color: var(--clay);
+}
+
+.about-location-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.about-location-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+
+.about-card-location strong {
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.about-card-location small {
+  margin-top: 4px;
 }
 
 .about-card-projects {
@@ -278,11 +306,20 @@
   .about-float-card {
     width: min(25vw, 235px);
     padding: 17px;
-    grid-template-columns: 28px 1fr;
+    grid-template-columns: 28px minmax(0, 1fr);
   }
 
   .about-float-card strong {
     font-size: 16px;
+  }
+
+  .about-card-location {
+    grid-template-columns: 40px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .about-card-location strong {
+    font-size: 24px;
   }
 }
 
@@ -292,7 +329,7 @@
     min-height: 0;
     margin-top: 48px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 24px;
   }
 
   .about-luz-aura {
@@ -332,17 +369,13 @@
     font-size: clamp(40px, 12vw, 50px);
   }
 
-  .about-luz-intro > p:last-child {
-    font-size: 13px;
-  }
-
   .about-luz-stage {
-    display: block;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .about-luz-portrait {
     width: min(88vw, 370px);
-    margin-bottom: 32px;
+    margin-bottom: 8px;
   }
 
   .about-float-card,
@@ -352,7 +385,7 @@
   .about-card-method {
     width: 100%;
     min-height: 0;
-    margin-top: 10px;
+    margin-top: 0;
     padding: 16px 17px;
   }
 
